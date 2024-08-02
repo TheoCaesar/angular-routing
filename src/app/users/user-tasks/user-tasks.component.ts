@@ -1,5 +1,6 @@
 import { Component, inject, input, computed } from '@angular/core';
 import { UsersService } from '../users.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-tasks',
@@ -10,9 +11,16 @@ import { UsersService } from '../users.service';
 export class UserTasksComponent {
   userId = input.required<string>();
   userService = inject(UsersService);
+  userParam:any;
+  activatedRoute = inject(ActivatedRoute);
 
-  // userName = computed(()=>this.userService.users.find(
-  // (user)=>user.id == this.userId())?.name)
-  user = computed(()=>this.userService.users.find(
-    (user)=>user.id == this.userId()))
+  user = computed(()=>this.userService.users.find((user)=>user.id == this.userId()))
+
+  ngOnInit() {
+    // console.log('activated route', this.activatedRoute)
+    this.activatedRoute.paramMap.subscribe({
+      next:(paramMapObj)=>
+        this.userParam = this.userService.users.find((user)=>user.id === paramMapObj.get('userId'))
+    })
+  }
 }
