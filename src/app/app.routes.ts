@@ -3,6 +3,7 @@ import { TaskComponent } from "./tasks/task/task.component";
 import { NoTaskComponent } from "./tasks/no-task/no-task.component";
 import { UserTasksComponent } from "./users/user-tasks/user-tasks.component";
 import { NewTaskComponent } from "./tasks/new-task/new-task.component";
+import { TasksComponent } from "./tasks/tasks.component";
 
 export const routes:Route[] = [
     {
@@ -14,8 +15,8 @@ export const routes:Route[] = [
         component: UserTasksComponent,
         children:[
             {
-                path:'tasks',  //<web-domain>/tasks
-                component: TaskComponent
+                path:'',  //<web-domain>/tasks
+                component: TasksComponent
             }, 
             {
                 path:'tasks/new',  //<web-domain>/tasks
