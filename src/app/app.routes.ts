@@ -15,11 +15,16 @@ export const routes:Route[] = [
         component: UserTasksComponent,
         children:[
             {
-                path:'',  //<web-domain>/tasks
+                path:'',  
+                redirectTo:'tasks', //to tasks path
+                pathMatch: 'full'
+            }, 
+            {
+                path:'tasks',
                 component: TasksComponent
             }, 
             {
-                path:'tasks/new',  //<web-domain>/tasks
+                path:'tasks/new', 
                 component: NewTaskComponent
             }
         ]
