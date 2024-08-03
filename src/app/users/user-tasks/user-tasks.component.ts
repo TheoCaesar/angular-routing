@@ -18,7 +18,9 @@ export class UserTasksComponent {
   user = computed(()=>this.userService.users.find((user)=>user.id == this.userId()))
 
   ngOnInit() {
-    // console.log('activated route', this.activatedRoute)
+    console.log(this.activatedRoute.snapshot);    
+    const userId = this.activatedRoute.snapshot.paramMap.get('userId');
+    console.log('user id',userId)
     this.activatedRoute.paramMap.subscribe({
       next:(paramMapObj)=>
         this.userParam = this.userService.users.find((user)=>user.id === paramMapObj.get('userId'))
