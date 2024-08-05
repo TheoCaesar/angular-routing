@@ -16,9 +16,11 @@ export class UserTasksComponent {
   activatedRoute = inject(ActivatedRoute);
 
   user = computed(()=>this.userService.users.find((user)=>user.id == this.userId()))
+  //with component input binding
+  message = input.required<string>();
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot);    
+    console.log('msg', this.message());    
     const userId = this.activatedRoute.snapshot.paramMap.get('userId');
     console.log('user id',userId)
     this.activatedRoute.paramMap.subscribe({
