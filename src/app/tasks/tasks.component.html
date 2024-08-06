@@ -4,7 +4,7 @@
   </a>
 </p>
 <ul>
-  @for (task of userTasks(); track task.id) {
+  @for (task of varUserTasks(); track task.id) {
     <li>
       <app-task [task]="task" />
     </li>
