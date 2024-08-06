@@ -11,24 +11,14 @@ import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink, RouterOu
 })
 export class UserTasksComponent {
   varUserName = input.required<string>();
-  // userId = input.required<string>();
-  // userService = inject(UsersService);
-  // userParam:any;
-  // activatedRoute = inject(ActivatedRoute);
+  activatedRoute = inject(ActivatedRoute);
+  message = input.required<string>();
 
-  // user = computed(()=>this.userService.users.find((user)=>user.id == this.userId()))
-  // //with component input binding
-  // message = input.required<string>();
-
-  // ngOnInit() {
-  //   console.log('msg', this.message());    
-  //   const userId = this.activatedRoute.snapshot.paramMap.get('userId');
-  //   console.log('user id',userId)
-  //   this.activatedRoute.paramMap.subscribe({
-  //     next:(paramMapObj)=>
-  //       this.userParam = this.userService.users.find((user)=>user.id === paramMapObj.get('userId'))
-  //   })
-  // }
+  ngOnInit() {
+    this.activatedRoute.data.subscribe({
+      next:(data)=>console.log(data)
+    })
+  }
 }
 
 export const resolverUserNameFunction: ResolveFn<string> = (
