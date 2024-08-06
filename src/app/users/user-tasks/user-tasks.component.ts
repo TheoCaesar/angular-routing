@@ -30,3 +30,11 @@ export const resolverUserNameFunction: ResolveFn<string> = (
       (user)=> user.id === activatedRouteSnapshot.paramMap.get('userId'))?.name || ''
     return userName
 })
+
+export const resolveSelectedUserTitle: ResolveFn<string> = (
+  (activatedRouteSnapshot, routerStateSnapshot
+  )=> {
+  return  resolverUserNameFunction(
+      activatedRouteSnapshot,routerStateSnapshot
+    ) +"'s tasks"
+})
