@@ -15,7 +15,6 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Params, ResolveFn, RouterLink, 
 export class TasksComponent {
   varUserTasks = input.required<Task[]>()
   userId = input.required<string>()
-  // orderBy = input<'asc'|'desc'>();
   orderBy = signal<'asc'|'desc'|undefined>(undefined);
   sortParam: Params|null|undefined = {orderBy: this.orderBy() === 'asc' ? 'desc' : 'asc'};
   // private taskService = inject(TasksService)
@@ -43,6 +42,7 @@ export class TasksComponent {
 export const resolveUserTasks: ResolveFn<Task[]> = (
   actvRouteSnap: ActivatedRouteSnapshot, routerState: RouterStateSnapshot
 ) => {
+  console.log('tasks resolver running...')
   const taskService = inject(TasksService)
   const order = actvRouteSnap.paramMap.get('orderBy')
   const tasks = taskService.allTasks().filter(
