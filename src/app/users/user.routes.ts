@@ -11,7 +11,8 @@ export const userRoutes:Route[] = [
     {
         path:'tasks',
         component: TasksComponent,
-        runGuardsAndResolvers:'paramsOrQueryParamsChange' ,
+        // runGuardsAndResolvers:'paramsOrQueryParamsChange' ,
+        runGuardsAndResolvers:'always' ,
         resolve:  {
             varUserTasks: resolveUserTasks
         }
